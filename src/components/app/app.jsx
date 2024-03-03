@@ -13,6 +13,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import i18n from "i18next";
 import HttpApi from "i18next-http-backend";
+import i18next from "i18next";
 
 i18n
   .use(initReactI18next)
@@ -30,8 +31,11 @@ i18n
     },
   });
 
-
 const App = () => {
+  useEffect(() => {
+    const id = localStorage.getItem("id")
+    i18next.changeLanguage(id)
+  }, [])
   return (
     <div className="app relative">
       <div className=" top-0 left-0 fixed w-full z-[999] bg-[#0a090c]">

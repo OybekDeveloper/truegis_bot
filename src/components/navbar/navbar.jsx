@@ -38,12 +38,7 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [lengOpen, setLengOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState({
-    code: "eng",
-    name: "English",
-    country_code: "gb",
-    icon: en,
-  });
+  const [selectedLanguage, setSelectedLanguage] = useState();
   const [defaultLanguage, setDefaultLanguage] = useState([]);
   const navigate = useNavigate();
   const id = localStorage.getItem("id")
@@ -82,9 +77,8 @@ const Navbar = () => {
       country_code: "gb",
       icon: en,
     })
-    i18next.changeLanguage(id)
-    console.log("ishladi")
   }, [id])
+
   useEffect(() => {
     const body = document.body;
     const blur = document.querySelector("#blur-effect");
