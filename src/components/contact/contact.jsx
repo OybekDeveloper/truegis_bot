@@ -7,16 +7,9 @@ import { Bounce, toast } from "react-toastify";
 
 const Contact = () => {
   const { t } = useTranslation()
-  useEffect(() => {
-    const scrollPage = (targetId) => {
-      const targetElement = document.getElementById(targetId);
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: 'smooth'
-      });
-    }
-    scrollPage('contact')
-  }, [])
+  const [phoneNumber, setPhoneNumber] = useState({ phone: '' })
+
+
   const [formData, setFormData] = useState({
     full_name: "",
     phone: "",
@@ -25,13 +18,46 @@ const Contact = () => {
   });
   const [errorMessage, setErrorMessage] = useState()
   const handleInputChange = (e) => {
-    const inputValue = e.target.value.replace(/[^0-9+]/g, "");
-    e.target.value = inputValue;
-    const { name, value } = e.target;
+    const inputValue = e.target.value.replace(/[^0-9]/g, "");
+    const formattedValue = [];
+    for (let i = 0; i < inputValue.length; i++) {
+      if (i === 0) {
+        formattedValue.push("+");
+      }
+      if (i === 3) {
+        formattedValue.push(" (");
+      }
+      if (i === 5) {
+        formattedValue.push(") ");
+      }
+      if (i === 8 || i === 10) {
+        formattedValue.push(" ");
+      }
+      formattedValue.push(inputValue[i]);
+    }
+    const finalValue = formattedValue.join("");
+    const { name } = e.target;
+    setPhoneNumber({
+      ...phoneNumber,
+      [name]: finalValue,
+    });
+  };
+  useEffect(() => {
+    const phone = phoneNumber.phone;
+    const phoneNumberWithPlus = phone.replace(/[^0-9+]/g, "");
     setFormData({
       ...formData,
-      [name]: value,
-    });
+      phone: phoneNumberWithPlus
+    })
+  }, [phoneNumber])
+
+  const handleInputFocus = (e) => {
+    if (!phoneNumber.phone) {
+      setPhoneNumber({
+        ...phoneNumber,
+        phone: "+998",
+      });
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,6 +93,7 @@ const Contact = () => {
           theme: "dark",
           transition: Bounce,
         });
+        setPhoneNumber({ phone: "" })
         setFormData({
           full_name: "",
           phone: "",
@@ -82,6 +109,18 @@ const Contact = () => {
     };
     fetchData();
   };
+
+  useEffect(() => {
+    const scrollPage = (targetId) => {
+      const targetElement = document.getElementById(targetId);
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+    scrollPage('contact')
+  }, [])
+
   return (
     <div
       id="contact"
@@ -126,10 +165,11 @@ const Contact = () => {
               <input
                 className={`${errorMessage?.phone ? "border-red-400" : "border-[#fdfdfd4d]"} border-[1px] border-solid contact-input input-style  p-[10px] bg-transparent text-[16px] font-[400] input-form`}
                 type="text"
-                value={formData.phone}
+                value={phoneNumber.phone}
                 placeholder="+998 (88) 123 45 67"
                 name="phone"
-                onChange={handleInputChange} // Add onChange event
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
               />
               <label className="text-[red]" htmlFor="text">{errorMessage?.phone && t("error_msg")}</label>
             </div>
