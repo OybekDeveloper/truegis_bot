@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import en from "./eng1.svg";
 import ru from "./russian.svg";
-import uz from "./uzbekistán.svg";
+import uz from './uzbekistán.svg'
 import frame from "./Frame.svg";
 import "./navbar.scss";
 import { useSelector } from "react-redux";
