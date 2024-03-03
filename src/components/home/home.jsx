@@ -21,30 +21,30 @@ const Home = () => {
       behavior: 'smooth'
     });
   }
-  localStorage.setItem("id", id)
-  useEffect(() => {
-    console.log(idUser);
+    localStorage.setItem("id", id)
+  // useEffect(() => {
+  //   console.log(idUser);
 
-    const fetchData = async () => {
+  //   const fetchData = async () => {
 
-      try {
-        const res = await axios({
-          method: "GET",
-          url: `https://admin13.uz/api/users/${idUser}/`,
-          headers: {
-            accept: "application/json",
-            "X-CSRFToken": "7DI9Q7uLDTXGywwg8ZtSDZrBsTxTSjYj5UkD7j6LcgtsWhxIM7wAgtyhqoXH2rFc"
-          }
-        })
-        console.log(res);
-        i18next.changeLanguage(res?.data?.lang);
-        dispatch(setDefLang(res?.data?.lang));
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    fetchData()
-  }, [id])
+  //     try {
+  //       const res = await axios({
+  //         method: "GET",
+  //         url: `https://admin13.uz/api/users/${idUser}/`,
+  //         headers: {
+  //           accept: "application/json",
+  //           "X-CSRFToken": "7DI9Q7uLDTXGywwg8ZtSDZrBsTxTSjYj5UkD7j6LcgtsWhxIM7wAgtyhqoXH2rFc"
+  //         }
+  //       })
+  //       console.log(res);
+  //       i18next.changeLanguage(res?.data?.lang);
+  //       dispatch(setDefLang(res?.data?.lang));
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [id])
   return (
     <div
       id="home"

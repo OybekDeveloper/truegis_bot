@@ -34,7 +34,7 @@ const language = [
 const Navbar = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const { defLang } = useSelector((state) => state.events);
+  // const { defLang } = useSelector((state) => state.events);
   const [activeLink, setActiveLink] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [lengOpen, setLengOpen] = useState(false);
@@ -76,6 +76,16 @@ const Navbar = () => {
     setDefaultLanguage(newData);
   }, [selectedLanguage?.name]);
   useEffect(() => {
+    setSelectedLanguage(language.filter(item => item.code === id)[0] ? language.filter(item => item.code === id)[0] : {
+      code: "eng",
+      name: "English",
+      country_code: "gb",
+      icon: en,
+    })
+    i18next.changeLanguage(id)
+    console.log("ishladi")
+  }, [id])
+  useEffect(() => {
     const body = document.body;
     const blur = document.querySelector("#blur-effect");
     if (isOpen) {
@@ -86,13 +96,7 @@ const Navbar = () => {
       blur.classList.remove("blur-effect");
     }
   }, [isOpen]);
-  useEffect(() => {
-    if (defLang) {
-      const data = language.filter((item) => item.code === defLang);
-      console.log(data);
-      setSelectedLanguage(data[0]);
-    }
-  }, [defLang]);
+
   const link = [
     {
       id: 1,
@@ -270,7 +274,7 @@ const Navbar = () => {
         </ul>
         <button
           onClick={() => {
-            navigate(`/contact`);
+            navigate(`/contact/${id}`);
             setIsOpen(false);
           }}
           className="msg-btn flex  w-full max-sm:hidden"
