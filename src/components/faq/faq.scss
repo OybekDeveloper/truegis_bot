@@ -1,0 +1,102 @@
+.faq {
+  .faqbtn {
+    .faqbtn__img {
+      transition: transform 0.3s ease-in-out;
+      transform: rotate(0);
+    }
+    .faqbtn__img {
+      transition: all 0.3s ease-in-out;
+    }
+    .faqbtn__img.active {
+      transform: rotate(45deg) !important;
+    }
+    .transition-height {
+      transition: max-height 0.5s ease-in-out; /* Adjust the duration and timing function as needed */
+    }
+
+    .faqbtn__content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+
+    .faqbtn__content.active {
+      max-height: 1000px; /* Set a large enough value */
+      opacity: 0.7;
+      transition: max-height 0.5s ease-in-out;
+    }
+  }
+  .shimmer-btn21 {
+    font-weight: 500;
+    border-radius: 6px;
+    --ofset: 0.5px;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    ::before {
+      content: "";
+      background: conic-gradient(transparent 180deg, white, transparent);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      aspect-ratio: 1;
+      width: 100%;
+      animation: rotate 2s linear infinite;
+    }
+    ::after {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      content: "Telegramdan";
+      background: inherit;
+      border-radius: inherit;
+      position: absolute;
+      inset: var(--ofset);
+      height: calc(100% - 2 * var(--ofset));
+      width: calc(100% - 2 * var(--ofset));
+    }
+    .msg-btn {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      padding: 10px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 6px;
+      border: 1px solid #a2c1ff;
+      background-image: linear-gradient(
+        to left,
+        #2970ff,
+        #7aa6ff,
+        #7aa6ff,
+        #2970ff
+      );
+      background-size: 300%;
+      background-position: right;
+      box-shadow: 0px -60px 32px 0px rgba(171, 132, 244, 0.3) inset;
+      transition: 300ms background-position ease-in-out,
+        300ms border ease-in-out;
+      &:hover {
+        border: 1px solid #2059cc;
+        background-position: left;
+        box-shadow: 0px -60px 32px 0px rgba(171, 132, 244, 0.3) inset;
+      }
+      &:focus {
+        border: 1px solid #a2c1ff;
+        background: #2970ff !important;
+        box-shadow: 0px -60px 32px 0px rgba(171, 132, 244, 0.3) inset;
+      }
+    }
+    @keyframes rotate {
+      from {
+        transform: translate(-50%, -50%) scale(1.2) rotate(0turn);
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1.2) rotate(1turn);
+      }
+    }
+  }
+}

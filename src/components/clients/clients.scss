@@ -1,0 +1,34 @@
+.clients {
+  .carusel::-webkit-scrollbar {
+    display: none;
+  }
+  .card {
+    border-radius: 12px;
+    border: 1px solid rgba(222, 207, 250, 0.1);
+    background: rgba(21, 20, 23, 0.5);
+    backdrop-filter: blur(12px);
+  }
+  .cards {
+    overflow: hidden;
+    white-space: nowrap;
+    &:hover {
+      .card-slide {
+        animation-play-state: paused;
+      }
+    }
+    .card-slide {
+      cursor: pointer;
+      animation: 35s slide infinite linear;
+      display: inline-block;
+    }
+
+    @keyframes slide {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+  }
+}

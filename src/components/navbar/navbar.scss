@@ -1,0 +1,25 @@
+.navbar {
+  background: #0a090c;
+  box-shadow: 0px -0.5px 0px 0px rgba(253, 253, 253, 0.16) inset;
+  .nav-img {
+    background: #0a090c, lightgray 50% / cover no-repeat;
+  }
+  @media screen and (max-width: 400px) {
+    .msg-btn {
+      width: 120px;
+      height: 35px;
+      font-size: 12px;
+    }
+  }
+  .links {
+    .active-link {
+      color: rgb(37 99 235) !important;
+    }
+    li {
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: rgb(96 165 250);
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Overused Grotesk Black"),
+    url(../fonts/woff2/OverusedGrotesk-Black.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-Black.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Overused Grotesk ExtraBold"),
+    url(../fonts/woff2/OverusedGrotesk-ExtraBold.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-ExtraBold.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Overused Grotesk Bold"),
+    url(../fonts/woff2/OverusedGrotesk-Bold.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-Bold.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Overused Grotesk SemiBold"),
+    url(../fonts/woff2/OverusedGrotesk-SemiBold.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-SemiBold.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Overused Grotesk Medium"),
+    url(../fonts/woff2/OverusedGrotesk-Medium.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-Medium.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Overused Grotesk Regular"),
+    url(../fonts/woff2/OverusedGrotesk-Light.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-Light.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Overused Grotesk Medium"),
+    url(../fonts/woff2/OverusedGrotesk-Medium.woff2) format("woff2"),
+    url(../fonts/woff/OverusedGrotesk-Medium.woff) format("woff");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Overused Grotesk";
+  background-color: #0a090c;
+  color: #fdfdfd;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+@media (min-width: 1025px) {
+  .no-scroll {
+    overflow: auto;
+  }
+}
