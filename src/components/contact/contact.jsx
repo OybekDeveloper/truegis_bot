@@ -137,7 +137,7 @@ const Contact = () => {
           <h1 className="text-[23px] font-[500]">{t("connect_text")}</h1>
           <div className="flex justify-start items-center gap-[12px]">
             <img src={phone} alt="phone" />
-            <p>+998 (88) 100 36 31</p>
+            <p>+998 (99) 999 43 93</p>
           </div>
           <div className="flex justify-start items-center gap-[12px]">
             <img src={dog} alt="phone" />
